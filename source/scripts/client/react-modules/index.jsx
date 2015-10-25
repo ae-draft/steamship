@@ -1,10 +1,24 @@
 require('../../../css/main.styl'); //styles
-
-import { Router, Route, IndexRoute } from 'react-router';
+window.Actions = require('../actions/actions');
+window.PersonsStore = require('../stores/personsStore');
+let { Router, Route, IndexRoute } = require('react-router');
 let ReactDOM = require('react-dom');
 let NavBar = require('./navbar.jsx');
+let Winner = require('./winner.jsx');
+let Statistics = require('./statistics/statistics.jsx');
+let ShortStats = require('./statistics/shortStats.jsx');
+moment.locale('ru');
 
 let App = React.createClass({
+  mixins: [Reflux.ListenerMixin],
+  getInitialState: function() {
+    return { Winner: null };
+  },
+  componentDidMount: function() {
+    this.listenTo(Actions.NewWinner, function (winner) {
+      this.setState({ winner: winner });
+    });
+  },
   render() {
     return (
       <div className="container-fluid">
@@ -20,7 +34,8 @@ let App = React.createClass({
 ReactDOM.render(
   (<Router>
     <Route path="/" component={App}>
-
+      <IndexRoute component={Winner} />
+      <Route path="statistics/:id" component={Statistics} />
     </Route>
   </Router>),
   document.getElementById('content')
