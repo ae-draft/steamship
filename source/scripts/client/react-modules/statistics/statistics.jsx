@@ -18,7 +18,9 @@ let Statistics = React.createClass({
 
     return (
       <div className="statistics-block">
-        <h3>Статистика</h3>
+        <div className="page-header">
+          <h1>Статистика <small>для пользователя {this.state.user.Name}</small></h1>
+        </div>
         <ShortStats winner={this.state.user} />
         {monthsStats}
       </div>
