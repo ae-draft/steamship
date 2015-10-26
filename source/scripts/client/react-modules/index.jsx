@@ -7,6 +7,7 @@ let NavBar = require('./navbar.jsx');
 let Winner = require('./winner.jsx');
 let Statistics = require('./statistics/statistics.jsx');
 let ShortStats = require('./statistics/shortStats.jsx');
+let About = require('./about.jsx');
 moment.locale('ru');
 
 let App = React.createClass({
@@ -31,6 +32,7 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={Winner} />
       <Route path="statistics/:id" component={Statistics} />
+      <Route path="about" component={About} />
     </Route>
   </Router>),
   document.getElementById('content')

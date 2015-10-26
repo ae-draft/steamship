@@ -4,7 +4,8 @@ let {
   ToolbarGroup,
   ToolbarTitle,
   ToolbarSeparator,
-  RaisedButton
+  RaisedButton,
+  FlatButton
 } = require('material-ui/lib');
 let Actions = require('../actions/actions');
 
@@ -18,10 +19,13 @@ var NavBar = React.createClass({
     return (
       <Toolbar>
         <ToolbarGroup key={0} float="left">
-          <img src="/public/assets/boat.png" className="icoHead" />
+          <Link to={'/'}><img src="/public/assets/boat.png" className="icoHead" /></Link>
           <ToolbarTitle text="Пароход счастья" />
           <ToolbarSeparator/>
           <RaisedButton label="START!" disabled={this.state.isHaveWinner} secondary={true} onClick={Actions.GetWinner} />
+        </ToolbarGroup>
+        <ToolbarGroup key={1} float="right">
+          <FlatButton label="Что это такое?" linkButton={true} href="#/about" />
         </ToolbarGroup>
       </Toolbar>
     );
