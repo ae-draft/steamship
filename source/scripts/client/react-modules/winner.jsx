@@ -2,12 +2,9 @@ let Avatar = require('material-ui/lib/avatar');
 var Link = require('react-router').Link;
 
 let Winner = React.createClass({
-  mixins: [
-    Reflux.connect(Actions.NewWinner, "winner"),
-    Reflux.connect(Actions.TodayWinner, "winner")
-  ],
-  componentDidMount: function() {
-    Actions.GetTodayWinner();
+  mixins: [Reflux.connect(Actions.NewWinner, "winner")],
+  getInitialState: function() {
+    return { winner: PersonsStore.state.todayWinner };
   },
   render() {
     return ( this.state.winner ?

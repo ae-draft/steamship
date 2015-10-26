@@ -10,14 +10,9 @@ let ShortStats = require('./statistics/shortStats.jsx');
 moment.locale('ru');
 
 let App = React.createClass({
-  mixins: [Reflux.ListenerMixin],
+  mixins: [Reflux.connect(Actions.NewWinner, 'winner')],
   getInitialState: function() {
-    return { Winner: null };
-  },
-  componentDidMount: function() {
-    this.listenTo(Actions.NewWinner, function (winner) {
-      this.setState({ winner: winner });
-    });
+    return { winner: null };
   },
   render() {
     return (

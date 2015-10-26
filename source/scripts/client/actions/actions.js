@@ -1,3 +1,3 @@
-var Actions = Reflux.createActions(['GetWinner', 'GetTodayWinner', 'TodayWinner', 'NewWinner']);
+var Actions = Reflux.createActions(['GetWinner', 'NewWinner']);
 
 module.exports = Actions;

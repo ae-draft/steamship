@@ -19,7 +19,7 @@ var NavBar = React.createClass({
       <Toolbar>
         <ToolbarGroup key={0} float="left">
           <img src="/public/assets/boat.png" className="icoHead" />
-          <ToolbarTitle text="SteamSHip" />
+          <ToolbarTitle text="Пароход счастья" />
           <ToolbarSeparator/>
           <RaisedButton label="START!" disabled={this.state.isHaveWinner} secondary={true} onClick={Actions.GetWinner} />
         </ToolbarGroup>
