@@ -4,7 +4,7 @@ let ShortStats = require('./shortStats.jsx');
 let Statistics = React.createClass({
   getInitialState: function() {
     return {
-      user: _.find(PersonsStore.state.persons, { 'Id': +this.props.params.id })
+      user: _.find(PersonsStore.state.persons, { '_id': this.props.params.id })
     };
   },
   render() {

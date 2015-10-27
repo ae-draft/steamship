@@ -1,7 +1,7 @@
-let About = React.createClass({
+let AboutPage = React.createClass({
   render() {
     return (
-      <div className="statistics-block">
+      <div className="about-page-block">
         <div className="page-header">
           <h1>Что это вообще такое? <small>или коротко о проекте.</small></h1>
         </div>
@@ -12,4 +12,4 @@ let About = React.createClass({
   }
 });
 
-module.exports = About;
+module.exports = AboutPage;

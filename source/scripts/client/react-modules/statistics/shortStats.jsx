@@ -1,7 +1,9 @@
 let ShortStats = React.createClass({
   render() {
     let count = _.sum(this.props.winner.Wins, (month) => month.Days.length);
-    let last = _.max(Array.prototype.concat(_.flatten(_.pluck(this.props.winner.Wins, 'Days'))));
+    let last = _.max(Array.prototype.concat(_.flatten(_.pluck(this.props.winner.Wins, 'Days'))), function(item){
+      return new Date(item);
+    });
 
     return (
       <div className="short-stats-block">

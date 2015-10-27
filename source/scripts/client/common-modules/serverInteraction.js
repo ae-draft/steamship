@@ -1,5 +1,5 @@
 var Request = {
-	host: "http://localhost:1337",
+	host: "http://localhost:1338",
 	send: function (url, data, options) {
     let requestDefaults = {
   		method: "POST",
