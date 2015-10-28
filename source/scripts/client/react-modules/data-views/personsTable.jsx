@@ -9,16 +9,18 @@ let {
 } = require('material-ui/lib');
 
 let PersonsTable = React.createClass({
+
   render() {
     let rows = this.props.persons.map((person, index) => {
+      let count = _.sum(person.Wins, (month) => month.Days.length);
       return (
         <TableRow key={index}>
           <TableRowColumn>{person.Name}</TableRowColumn>
-          <TableRowColumn> </TableRowColumn>
+          <TableRowColumn>{count}</TableRowColumn>
         </TableRow>
       )
     });
-    
+
     return (
       <Table fixedHeader={true} fixedFooter={true} selectable={true} multiSelectable={true}>
         <TableHeader enableSelectAll={true}>
