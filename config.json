@@ -1,6 +1,6 @@
 {
     "port" : 1338,
     "dbhost": {
-      "uri": "mongodb://steamship_app:1a2s3d4f@ds048878.mongolab.com:48878/steamship"
+      "uri": "mongodb://steamship_app:1a2s3d4f@ds048878.mongolab.com:48878/steamship-test"
     }
 }
