@@ -2,20 +2,17 @@ let Winner = require('../winner.jsx');
 let ShortStats = require('../statistics/shortStats.jsx');
 let MainPage = React.createClass({
   mixins: [Reflux.ListenerMixin],
-  getInitialState: function() {
-    return { winner: PersonsStore.state.todayWinner };
+  getInitialState: () => ({ winner: PersonsStore.state.todayWinner }),
+  componentDidMount: function() {
+    this.listenTo(PersonsStore, (state) => this.setState({ winner: state.todayWinner }));
   },
-  componentDidMount: function(){
-    this.listenTo(PersonsStore, (state) => {
-      this.setState({ winner: state.todayWinner });
-    });
+  render: function() {
+    if(!this.state.winner) return null;
 
-  },
-  render() {
     return (
       <div className="main-page-block">
         <Winner />
-        { this.state.winner ? <ShortStats winner={this.state.winner} /> : null }
+        <ShortStats winner={this.state.winner} />
       </div>
     )
   }

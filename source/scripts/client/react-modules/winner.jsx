@@ -10,7 +10,6 @@ let Winner = React.createClass({
     this.listenTo(PersonsStore, (state) => {
       this.setState({ winner: state.todayWinner });
     });
-
   },
   render() {
     return ( this.state.winner ?

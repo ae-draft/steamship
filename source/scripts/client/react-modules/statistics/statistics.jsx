@@ -2,12 +2,23 @@ let MonthStat = require('./monthStats.jsx');
 let ShortStats = require('./shortStats.jsx');
 
 let Statistics = React.createClass({
+  mixins: [Reflux.ListenerMixin],
+  _findById: (_id, store) => {
+    return _.find(store, { '_id': _id });
+  },
   getInitialState: function() {
     return {
-      user: _.find(PersonsStore.state.persons, { '_id': this.props.params.id })
+      user: this._findById(this.props.params.id, PersonsStore.state.persons)
     };
   },
-  render() {
+  componentDidMount: function(){
+    this.listenTo(PersonsStore, (state) => {
+      this.setState({ user: this._findById(this.props.params.id, state.persons) });
+    });
+  },
+  render: function() {
+    if(_.isEmpty(this.state.user)) return null;
+    
     let monthsStats = this.state.user.Wins.map((month, index) => {
       return (
         <div className="stats-month" key={index}>
